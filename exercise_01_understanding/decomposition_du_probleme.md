@@ -33,19 +33,26 @@ Tâche 3.1 : Décomposer l'implémentation de l'agent
     colonnes jouables.
 
    -soit il choisit une colonne selon une règle simple:
+
                -s'il peut gagner, joue le coup gagnant
+
                -si l'adversaire peut gagner, le bloque
+
                -si la colonne du milieu n'est pas pleine, la choisir
+
                -sinon, choisir une colonne de manière aléatoire et sans
-                préférence parmi les colonnes jouables
+                préférence parmi les colonnes jouables    
 
    -soit il choisit une colonne qui crée une configuration dans laquelle il a deux
     possibilités de gagner à son prochain tour.
 
    -soit il choisit une colonne selon une stratégie plus avancée:
+
                -algorithme minimax
-               -Monte Carlo 
-               -apprentissage par renforcement
+
+               -Monte Carlo
+
+               -apprentissage par renforcement  
 
 4) L'agent doit retourner l'indice de la colonne choisie où insérer son jeton.
 
@@ -61,14 +68,17 @@ Tâche 3.2 : Conception d'algorithme-Progression
 3) Niveau 2 : si l'agent peut gagner, joue le coup gagnant
 
 4) Niveau 3 : -si l'adversaire peut gagner, l'agent le bloque
+
               -l'agent choisit une colonne qui empêche l'adversaire d'avoir deux 
                possibilités de gagner à son prochain tour
 
 5) Niveau 4 : -si la colonne du milieu n'est pas pleine, l'agent la choisit
+
               -parmi les colonnes jouables, l'agent choisit les colonnes 
                intermédiaires plutôt que les colonnes extérieures
+
               -l'agent choisit une colonne qui crée une configuration dans 
-               laquelle il a deux possibilités de gagner à son prochain tour
+               laquelle il a deux possibilités de gagner à son prochain tour  
 
 6) Niveau 5+ : l'agent choisit une colonne selon une stratégie plus avancée 
                (algorithme minimax, Monte Carlo, apprentissage par renforcement)
