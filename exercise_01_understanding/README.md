@@ -1,6 +1,7 @@
 Activité 1 : Comprendre le Puissance 4 et le framework Python PettingZoo
 
 Partie 1 : Règles du Puissance 4
+
 Tâche 1.1 : Analyse des règles du jeu 
 
 1) Le plateau du Puissance 4 est composé de 6 lignes et de 7 colonnes.
@@ -23,12 +24,9 @@ Tâche 1.1 : Analyse des règles du jeu
 
 Tâche 1.2 : Analyse des conditions de victoire
 
-1) Les quatres motifs de victoire sont :
+1) Les quatres motifs de victoire sont : 
 
-   x               x    x
-   x    xxxx      x      x
-   x             x        x
-   x            x          x
+xxxx (horizontale), | (verticale), / (diagonale à pente positive), \ (diagonale à pente négative)
 
 2) Pour une position donnée, il y a quatre directions à vérifier pour une 
    victoire : horizontale, verticale, diagonale à pente positive et diagonale
