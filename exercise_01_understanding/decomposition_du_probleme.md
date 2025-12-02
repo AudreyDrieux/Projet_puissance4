@@ -80,9 +80,9 @@ Squelette de la classe Agent par stratégie :
 Niveau 0 : 
 
 class Agent  
-      |- env - environnement Pettingzoo  
-      |- action_space - l'espace d'action: tableau de taille 7   
-      |- player_name - prénom pour l'agent  
+            |- env - environnement Pettingzoo  
+            |- action_space - l'espace d'action: tableau de taille 7   
+            |- player_name - prénom pour l'agent  
 
       choose_action() - choisit une colonne de manière aléatoire sans
                         préférence et sans tenir compte des colonnes
