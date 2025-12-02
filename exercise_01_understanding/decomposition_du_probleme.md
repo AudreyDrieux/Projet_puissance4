@@ -79,7 +79,7 @@ Squelette de la classe Agent par stratégie :
 
 Niveau 0 : 
 
-class Agent
+class Agent()
       |- env - environnement Pettingzoo
       |- action_space - l'espace d'action: tableau de taille 7 
       |- player_name - prénom pour l'agent
@@ -91,7 +91,7 @@ class Agent
 
 Niveau 1 : 
 
-class Agent
+class Agent()
       |- env - environnement Pettingzoo
       |- action_space - l'espace d'action: tableau de taille 7 
       |- player_name - prénom pour l'agent
@@ -102,7 +102,7 @@ class Agent
 
 Niveau 2 :  
 
-class Agent
+class Agent()
       |- env - environnement Pettingzoo
       |- action_space - l'espace d'action: tableau de taille 7 
       |- player_name - prénom pour l'agent
@@ -117,7 +117,7 @@ class Agent
 
 Niveau 3 :  
 
-class Agent
+class Agent()
       |- env - environnement Pettingzoo
       |- action_space - l'espace d'action: tableau de taille 7 
       |- player_name - prénom pour l'agent
@@ -138,7 +138,7 @@ class Agent
                                                            
 Niveau 4 :  
 
-class Agent
+class Agent()
       |- env - environnement Pettingzoo
       |- action_space - l'espace d'action: tableau de taille 7 
       |- player_name - prénom pour l'agent
