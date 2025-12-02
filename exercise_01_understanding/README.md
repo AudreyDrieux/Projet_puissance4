@@ -26,7 +26,7 @@ Tâche 1.2 : Analyse des conditions de victoire
 
 1) Les quatres motifs de victoire sont : 
 
-xxxx (horizontale), | (verticale), / (diagonale à pente positive), \ (diagonale à pente négative)
+   xxxx (horizontale), | (verticale), / (diagonale à pente positive), \ (diagonale à pente négative)
 
 2) Pour une position donnée, il y a quatre directions à vérifier pour une 
    victoire : horizontale, verticale, diagonale à pente positive et diagonale
