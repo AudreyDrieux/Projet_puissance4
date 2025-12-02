@@ -79,10 +79,10 @@ Squelette de la classe Agent par stratégie :
 
 Niveau 0 : 
 
-class Agent()
-      |- env - environnement Pettingzoo
-      |- action_space - l'espace d'action: tableau de taille 7 
-      |- player_name - prénom pour l'agent
+class Agent  
+      |- env - environnement Pettingzoo  
+      |- action_space - l'espace d'action: tableau de taille 7   
+      |- player_name - prénom pour l'agent  
 
       choose_action() - choisit une colonne de manière aléatoire sans
                         préférence et sans tenir compte des colonnes
@@ -91,10 +91,10 @@ class Agent()
 
 Niveau 1 : 
 
-class Agent()
-      |- env - environnement Pettingzoo
-      |- action_space - l'espace d'action: tableau de taille 7 
-      |- player_name - prénom pour l'agent
+class Agent  
+      |- env - environnement Pettingzoo  
+      |- action_space - l'espace d'action: tableau de taille 7   
+      |- player_name - prénom pour l'agent  
 
       choose_action()
           |- get_valid_actions() - Retourne la liste des indices des
@@ -102,10 +102,10 @@ class Agent()
 
 Niveau 2 :  
 
-class Agent()
-      |- env - environnement Pettingzoo
-      |- action_space - l'espace d'action: tableau de taille 7 
-      |- player_name - prénom pour l'agent
+class Agent  
+      |- env - environnement Pettingzoo  
+      |- action_space - l'espace d'action: tableau de taille 7   
+      |- player_name - prénom pour l'agent  
                  
       choose_action()
           |- get_valid_actions() - Retourne la liste des indices des 
@@ -117,10 +117,10 @@ class Agent()
 
 Niveau 3 :  
 
-class Agent()
-      |- env - environnement Pettingzoo
-      |- action_space - l'espace d'action: tableau de taille 7 
-      |- player_name - prénom pour l'agent
+class Agent  
+      |- env - environnement Pettingzoo  
+      |- action_space - l'espace d'action: tableau de taille 7   
+      |- player_name - prénom pour l'agent  
                  
       choose_action()
           |- get_valid_actions() - Retourne la liste des indices des
@@ -138,10 +138,10 @@ class Agent()
                                                            
 Niveau 4 :  
 
-class Agent()
-      |- env - environnement Pettingzoo
-      |- action_space - l'espace d'action: tableau de taille 7 
-      |- player_name - prénom pour l'agent
+class Agent  
+      |- env - environnement Pettingzoo  
+      |- action_space - l'espace d'action: tableau de taille 7   
+      |- player_name - prénom pour l'agent  
 
       choose_action()
           |- get_valid_actions() - Retourne la liste des indices des
