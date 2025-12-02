@@ -77,75 +77,85 @@ Tâche 3.3 : Définir l'interface de l'agent
 
 Squelette de la classe Agent par stratégie :
 
-Niveau 0 : class Agent
-                 |- env - environnement Pettingzoo
-                 |- action_space - l'espace d'action: tableau de taille 7 
-                 |- player_name - prénom pour l'agent
+Niveau 0 : 
 
-                 choose_action() - choisit une colonne de manière aléatoire sans
-                                   préférence et sans tenir compte des colonnes
-                                   jouables
+class Agent
+      |- env - environnement Pettingzoo
+      |- action_space - l'espace d'action: tableau de taille 7 
+      |- player_name - prénom pour l'agent
+
+      choose_action() - choisit une colonne de manière aléatoire sans
+                        préférence et sans tenir compte des colonnes
+                        jouables
 
 
-Niveau 1 : class Agent
-                 |- env - environnement Pettingzoo
-                 |- action_space - l'espace d'action: tableau de taille 7 
-                 |- player_name - prénom pour l'agent
+Niveau 1 : 
 
-                 choose_action()
-                     |- get_valid_actions() - Retourne la liste des indices des
-                                              colonnes jouables
+class Agent
+      |- env - environnement Pettingzoo
+      |- action_space - l'espace d'action: tableau de taille 7 
+      |- player_name - prénom pour l'agent
 
-Niveau 2 :  class Agent
-                 |- env - environnement Pettingzoo
-                 |- action_space - l'espace d'action: tableau de taille 7 
-                 |- player_name - prénom pour l'agent
+      choose_action()
+          |- get_valid_actions() - Retourne la liste des indices des
+                                   colonnes jouables
+
+Niveau 2 :  
+
+class Agent
+      |- env - environnement Pettingzoo
+      |- action_space - l'espace d'action: tableau de taille 7 
+      |- player_name - prénom pour l'agent
                  
-                 choose_action()
-                     |- get_valid_actions() - Retourne la liste des indices des 
-                                              colonnes jouables
+      choose_action()
+          |- get_valid_actions() - Retourne la liste des indices des 
+                                   colonnes jouables
 
-                     |- find_winning_move() - Retourne l'indice de la colonne
-                                              qui permet à l'agent de gagner
-                                              (si celle-ci existe)
+          |- find_winning_move() - Retourne l'indice de la colonne
+                                   qui permet à l'agent de gagner
+                                   (si celle-ci existe)
 
-Niveau 3 :  class Agent
-                 |- env - environnement Pettingzoo
-                 |- action_space - l'espace d'action: tableau de taille 7 
-                 |- player_name - prénom pour l'agent
+Niveau 3 :  
+
+class Agent
+      |- env - environnement Pettingzoo
+      |- action_space - l'espace d'action: tableau de taille 7 
+      |- player_name - prénom pour l'agent
                  
-                 choose_action()
-                     |- get_valid_actions() - Retourne la liste des indices des
-                                              colonnes jouables
+      choose_action()
+          |- get_valid_actions() - Retourne la liste des indices des
+                                   colonnes jouables
 
-                     |- find_blocking_move() - Retourne l'indice de la colonne
-                                               qui empêche l'adversaire de gagner
-                                               (si celle-ci existe)
+          |- find_blocking_move() - Retourne l'indice de la colonne
+                                    qui empêche l'adversaire de gagner
+                                    (si celle-ci existe)
 
-                     |- find_blocking_double_threat() - Retourne l'indice de la colonne
-                                                        qui empêche l'adversaire d'avoir
-                                                        deux possibilités de gagner à son
-                                                        prochain tour
-                                                        (si celle-ci existe)
+          |- find_blocking_double_threat() - Retourne l'indice de la colonne
+                                             qui empêche l'adversaire d'avoir
+                                             deux possibilités de gagner à son
+                                             prochain tour
+                                             (si celle-ci existe)
                                                            
-Niveau 4 :  class Agent
-                 |- env - environnement Pettingzoo
-                 |- action_space - l'espace d'action: tableau de taille 7 
-                 |- player_name - prénom pour l'agent
+Niveau 4 :  
 
-                 choose_action()
-                     |- get_valid_actions() - Retourne la liste des indices des
-                                              colonnes jouables
+class Agent
+      |- env - environnement Pettingzoo
+      |- action_space - l'espace d'action: tableau de taille 7 
+      |- player_name - prénom pour l'agent
 
-                     |- prefer_center_columns() - Si la colonne du milieu est
-                                                  jouable, la jouer 
-                                                  Sinon préférer les colonnes intermédiaires 
-                                                  aux colonnes extérieures
+      choose_action()
+          |- get_valid_actions() - Retourne la liste des indices des
+                                   colonnes jouables
+
+          |- prefer_center_columns() - Si la colonne du milieu est
+                                       jouable, la jouer 
+                                       Sinon préférer les colonnes intermédiaires 
+                                       aux colonnes extérieures
                     
-                     |- find_double_threat() - Retourne l'indice de la colonne qui
-                                               permet à l'agent d'avoir deux possibilités 
-                                               de gagner à son prochain tour
-                                               (si celle-ci existe)
+          |- find_double_threat() - Retourne l'indice de la colonne qui
+                                    permet à l'agent d'avoir deux possibilités 
+                                    de gagner à son prochain tour
+                                    (si celle-ci existe)
 
 
 
