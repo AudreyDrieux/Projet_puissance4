@@ -109,6 +109,7 @@ Tâche 1.2 : Analyse des conditions de victoire
 
 
 Partie 2 : Comprendre PettingZoo
+
 Tâche 2.1 : Lire la documentation
 
 1) Les noms des deux agents dans l'environnement sont player_0 et player_1.
