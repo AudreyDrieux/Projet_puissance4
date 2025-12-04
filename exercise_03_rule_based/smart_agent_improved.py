@@ -86,7 +86,7 @@ class SmartAgent:
         return action
         
 
-    def _get_valid_actions(self, action_mask): # 把action_mash转化为可以下棋的列
+    def _get_valid_actions(self, action_mask): 
         """
         Get list of valid column indices
 
