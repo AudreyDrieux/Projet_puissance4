@@ -90,9 +90,9 @@ def test_time_per_move():
     env.reset()
     agent = SmartAgent(env)
 
-    board = np.zeros((6,7,2), dtype=int) # 空棋盘
+    board = np.zeros((6,7,2), dtype=int)
     start = time.time()
-    for _ in range(200):      # 调用 200 次
+    for _ in range(200):
         agent.choose_action(board,reward=0.0,terminated=False,truncated=False,info=None,action_mask=np.ones(7, dtype=int))
     end = time.time()
     avg = (end - start) / 200
