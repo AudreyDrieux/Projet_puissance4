@@ -4,7 +4,13 @@ from pettingzoo.classic import connect_four_v3
 
 def run_tournament(agent_classes, num_games):
     """
-    agent_classes: [AgentClassPlayer0, AgentClassPlayer1]
+    Competition between the two intelligent agents for n times
+    
+    Parameters:
+        agent_classes: [AgentClassPlayer0, AgentClassPlayer1]
+        num_games: number of games
+    Return:
+        results: the results of the competition between the two intelligent agents for n times
     """
     Agent0, Agent1 = agent_classes
 
