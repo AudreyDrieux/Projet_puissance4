@@ -2,9 +2,9 @@ Partie 1 : Conception de stratégie de test
 
 Tâche 4.1 : Concevoir votre plan de test
 
-1.1 Que tester ?
+1.1) Que tester ?
 
-.Tests fonctionnels :  
+1) Tests fonctionnels :  
 
     .Lorsque c'est son tour de jouer, l'agent sélectionne t-il une 
      colonne valide (indice compris entre 0 et 6) ?
@@ -15,13 +15,13 @@ Tâche 4.1 : Concevoir votre plan de test
     .Lorsque la partie est terminée, l'agent arrête t-il de faire des 
      coups ?
 
-.Tests de performance :  
+2) Tests de performance :  
 
    .Combien de temps met l'agent pour faire un coup ?
 
    .Combien de mémoire est utilisée ?
 
-.Tests stratégiques :  
+3) Tests stratégiques :  
 
    .Combien de parties gagne l'agent intelligent contre l'agent aléatoire ?
 
@@ -36,9 +36,9 @@ Tâche 4.1 : Concevoir votre plan de test
     de gagner à son prochain tour ?
 
 
-1.2 Comment tester ?
+1.2) Comment tester ?
 
-.Tests fonctionnels :  
+1) Tests fonctionnels :  
 
    .Sélection d'un coup valide : vérifier que l'indice de la colonne choisie est bien
     un entier compris entre 0 et 6
@@ -49,11 +49,11 @@ Tâche 4.1 : Concevoir votre plan de test
    .Jouer une partie et vérifier que celle-ci se termine au bout d'un nombre fini
     de coups
 
-.Tests de performance :  
+2) Tests de performance :  
 
    .Utilisation de time.time() et de tracemalloc pour mesurer les ressources
 
-.Tests stratégiques :  
+3) Tests stratégiques :  
 
    .Taux de victoire : Jouer N parties et mesurer le pourcentage de victoires
 
@@ -70,7 +70,7 @@ Tâche 4.1 : Concevoir votre plan de test
     gagner à son prochain tour si une colonne spécifique est choisie. Vérifier 
     que l'agent intelligent ne choisit pas cette colonne.
 
-1.3 Critères de succès  
+1.3) Critères de succès    
 
    .L'agent intelligent doit gagner 90 pourcents des parties contre l'agent
     aléatoire
