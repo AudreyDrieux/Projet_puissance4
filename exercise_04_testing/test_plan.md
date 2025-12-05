@@ -86,17 +86,17 @@ Scénario 1 : Détecter une victoire immédiate
 
 Etat du plateau :
 
-.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.
+. . . . . . .  
 
-.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.
+. . . . . . .  
 
-.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.  
+. . . . . . .  
 
-.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.  
+. . . . . . .  
 
-.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.  
+. . . . . . .  
 
-X X X .&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.    
+x x x . . . .  
 
 Attendu : L'agent joue la colonne 3 pour gagner
 
