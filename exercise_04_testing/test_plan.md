@@ -135,7 +135,7 @@ Etat du plateau :
 
 L'agent dont c'est le tour de jouer a 2 jetons dans la ligne 5 et qui sont dans
 les colonnes 1 et 3. Il a également un jeton dans la ligne 4 et qui est dans la 
-colonnes 2. Enfin, il a 3 jetons dans la colonne 2 et qui sont dans les lignes
+colonne 2. Enfin, il a 3 jetons dans la colonne 2 et qui sont dans les lignes
 0, 1 et 2.
 
 L'adversaire a 3 jetons dans la ligne 5 et qui sont dans les colonnes 0, 2 et 4. 
