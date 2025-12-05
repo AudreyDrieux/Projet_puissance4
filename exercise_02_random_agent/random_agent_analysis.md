@@ -3,7 +3,7 @@ Partie 3 : Analyse
 Tâche 2.7 : Analyse statistique
 
 1) Les victoires sont à peu près égales entre le joueur 1 et le joueur 2. Sur 100
-   parties, le joueur 1 (player_ 0) en a gagné 55 tandis que le joueur 2 (player_ 1)
+   parties, le joueur 1 (player_0) en a gagné 55 tandis que le joueur 2 (player_1)
    en a gagné 45.
 
 2) Le joueur qui commence par jouer a l'avantage de choisir le premier coup. Si le
