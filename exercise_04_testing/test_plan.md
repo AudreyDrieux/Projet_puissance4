@@ -2,7 +2,7 @@ Partie 1 : Conception de stratégie de test
 
 Tâche 4.1 : Concevoir votre plan de test
 
-1.1) Que tester ?
+1.1 Que tester ?
 
 1) Tests fonctionnels :  
 
@@ -36,7 +36,7 @@ Tâche 4.1 : Concevoir votre plan de test
     de gagner à son prochain tour ?
 
 
-1.2) Comment tester ?
+1.2 Comment tester ?
 
 1) Tests fonctionnels :  
 
@@ -70,7 +70,7 @@ Tâche 4.1 : Concevoir votre plan de test
     gagner à son prochain tour si une colonne spécifique est choisie. Vérifier 
     que l'agent intelligent ne choisit pas cette colonne.
 
-1.3) Critères de succès    
+1.3 Critères de succès    
 
    .L'agent intelligent doit gagner 90 pourcents des parties contre l'agent
     aléatoire
@@ -86,17 +86,17 @@ Scénario 1 : Détecter une victoire immédiate
 
 Etat du plateau :
 
-. . . . . . .  
+.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.
 
-. . . . . . .  
+.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.
 
-. . . . . . .  
+.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.  
 
-. . . . . . .  
+.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.  
 
-. . . . . . .  
+.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.  
 
-X X X . . . .  
+X&nbsp;&nbsp;X&nbsp;&nbsp;X&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.    
 
 Attendu : L'agent joue la colonne 3 pour gagner
 
