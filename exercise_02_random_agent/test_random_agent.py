@@ -86,7 +86,7 @@ def multiple_games(num_games):
         
         array_nb_actions_per_games.append(nb_actions)
 
-    env.close()
+        env.close()
     results['min_nb_actions'] = min(array_nb_actions_per_games)
 
     nb_total_actions = 0 # nombre total de coups joués 
