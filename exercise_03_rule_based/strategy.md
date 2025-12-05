@@ -21,7 +21,7 @@ Tâche 3.1 : Conception de la stratégie
 2) Les règles indispensables que doivent suivre l'agent sont: 
 
    1.Choisir une colonne parmi les colonnes jouables, ne pas faire de coups
-     illégales
+     illégaux
 
    2.Si l'agent peut gagner, joue le coup gagnant
 
@@ -34,7 +34,7 @@ Tâche 3.1 : Conception de la stratégie
    1.Créer des doubles menaces: choisir une colonne qui permet à l'agent
      d'avoir deux possibilités de gagner à son prochain tour
 
-   2.Privilégier les colonnes intermédiaires plutôt que les colonnes extérieures
+   2.Privilégier les colonnes intermédiaires aux colonnes extérieures
 
 
 
