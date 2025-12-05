@@ -102,17 +102,17 @@ Attendu : L'agent joue la colonne 3 pour gagner
 
 Scénario 2 : Bloquer la victoire de l'adversaire 
 
-. . . . . . .  
+.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.
 
-. . . . . . .  
+.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.
 
-. . . . . . .  
+.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.  
 
-. . . . . . .  
+.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.  
 
-. . . . . . .  
+.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.  
 
-O O O . . . .  
+O O O .&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;. 
 
 Attendu : L'agent joue la colonne 3 pour bloquer 
 
