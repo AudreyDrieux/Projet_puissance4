@@ -5,6 +5,9 @@ from random_agent import RandomAgent
 from smart_agent_improved import SmartAgent
 
 def test_get_valid_actions():
+    '''
+    Test SmartAgent._get_valid_actions
+    '''
     env = connect_four_v3.env(render_mode=None)
     env.reset(seed=42)
     agent = SmartAgent(env)
@@ -16,6 +19,9 @@ def test_get_valid_actions():
     assert agent._get_valid_actions(mask) == [1, 3, 5]
 
 def test_get_next_row():
+    '''
+    Test SmartAgent._get_next_row
+    '''
     env = connect_four_v3.env(render_mode=None)
     env.reset(seed=42)
     agent = SmartAgent(env)
@@ -29,6 +35,15 @@ def test_get_next_row():
     assert agent._get_next_row(board, 3) == 4
 
 def to_board(matrix, channel=0):
+    '''
+    Convert the chessboard into a matrix
+
+    Parameters:
+        matrix: Visualized chessboard
+        channel: 0 for current player, 1 for opponent
+    Return:
+        board: numpy array (6, 7)
+    '''
     board = np.zeros((6,7,2))
     for r in range(6):
         for c in range(7):
@@ -37,6 +52,9 @@ def to_board(matrix, channel=0):
     return board
 
 def test_check_win_from_position():
+    '''
+    Test SmartAgent._check_win_from_position
+    '''
     env = connect_four_v3.env(render_mode=None)
     env.reset(seed=0)
     agent = SmartAgent(env)
@@ -90,6 +108,9 @@ def test_check_win_from_position():
     assert agent._check_win_from_position(board, row=2, col=2, channel=0) is True
 
 def test_find_winning_move():
+    '''
+    Test SmartAgent._find_winning_move
+    '''
     env = connect_four_v3.env(render_mode=None)
     env.reset(seed=0)
     agent = SmartAgent(env)
@@ -108,6 +129,9 @@ def test_find_winning_move():
     assert agent._find_winning_move(observation, valid_actions, channel=0) == 3
 
 def test_smart_vs_random():
+    '''
+    Test between SmartAgent and RandomAgent
+    '''
     smart_wins = 0
     games = 100
 
