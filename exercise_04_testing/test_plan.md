@@ -88,8 +88,8 @@ Scénario 1 : Détecter une victoire immédiate
 
 Etat du plateau :  
 
-L'agent dont c'est le tour de jouer a 3 jetons dans la dernière ligne et qui
-sont dans les colonnes 0, 1 et 2.
+L'agent dont c'est le tour de jouer a 3 jetons dans la ligne 5 et qui sont 
+dans les colonnes 0, 1 et 2.
 
 Attendu : L'agent joue la colonne 3 pour gagner
   
@@ -98,8 +98,7 @@ Scénario 2 : Bloquer la victoire de l'adversaire
 
 Etat du plateau :  
 
-Ladversaire a 3 jetons dans la dernière ligne et qui sont dans les colonnes 0, 1
-et 2.
+Ladversaire a 3 jetons dans la ligne 5 et qui sont dans les colonnes 0, 1 et 2.
 
 Attendu : L'agent joue la colonne 3 pour bloquer 
   
@@ -108,10 +107,10 @@ Scénario 3 : Bloquer une double menace de l'adversaire
 
 Etat du plateau :  
 
-L'agent dont c'est le tour de jouer a un jeton dans l'avant dernière ligne et qui est
-dans la colonne 3.
+L'agent dont c'est le tour de jouer a un jeton dans la ligne 4 et qui est dans la 
+colonne 3.
 
-L'adversaire a 2 jetons dans la dernière ligne et qui sont dans les colonnes 2 et 3.
+L'adversaire a 2 jetons dans la ligne 5 et qui sont dans les colonnes 2 et 3.
 
 Attendu : L'agent joue la colonne 1 ou 4 pour bloquer la double menace
   
@@ -120,11 +119,11 @@ Scénario 4 : Créer une double menace
 
 Etat du plateau :  
 
-L'agent dont c'est le tour de jouer a 2 jetons dans la dernière ligne et qui
-sont dans les colonnes 3 et 4.
+L'agent dont c'est le tour de jouer a 2 jetons dans la ligne 5 et qui sont dans 
+les colonnes 3 et 4.
 
-L'adversaire a un jeton dans la dernière ligne et qui est dans la colonne 0. Il
-a également un jeton dans l'avant dernière ligne et qui est dans la colonne 3.
+L'adversaire a un jeton dans la ligne 5 et qui est dans la colonne 0. Il a également un 
+jeton dans la ligne 4 et qui est dans la colonne 3.
 
 Attendu : L'agent choisit soit la colonne 2 soit la colonne 5 pour créer une double menace 
   
