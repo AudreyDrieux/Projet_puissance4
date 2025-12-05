@@ -26,6 +26,9 @@ class SmartAgent:
         self.player_name = player_name or "SmartAgent"
 
     def choose_action(self, observation, reward=0.0, terminated=False, truncated=False, info=None, action_mask=None):
+        '''
+        Choose an action using rule-based strategy
+        '''
         if terminated or truncated:
             return None
         
