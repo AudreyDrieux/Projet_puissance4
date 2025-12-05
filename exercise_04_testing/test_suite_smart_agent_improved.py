@@ -7,6 +7,15 @@ from random_agent_copy2 import RandomAgent
 from smart_agent_improved import SmartAgent
 
 def to_board(matrix, channel=0):
+    '''
+    Convert the chessboard into a matrix
+
+    Parameters:
+        matrix: Visualized chessboard
+        channel: 0 for current player, 1 for opponent
+    Return:
+        board: numpy array (6, 7)
+    '''
     board = np.zeros((6,7,2))
     for r in range(6):
         for c in range(7):
@@ -18,6 +27,9 @@ def to_board(matrix, channel=0):
 
 # Sélection de coup valide
 def test_valid_move():
+    '''
+    Test if the SmartAgent select the valid move
+    '''
     env = connect_four_v3.env(render_mode=None)
     env.reset(seed=42)
     agent = SmartAgent(env)
@@ -36,6 +48,9 @@ def test_valid_move():
 
 # Respect du masque d'action
 def test_respect_action_mask():
+    '''
+    Test if the SmartAgent respect `action_mask`
+    '''
     env = connect_four_v3.env(render_mode=None)
     env.reset(seed=42)
     agent = SmartAgent(env)
@@ -56,6 +71,9 @@ def test_respect_action_mask():
 
 # Gestion de la fin de partie
 def test_handles_terminated_game():
+    '''
+    Test if the SmartAgent can finish the game normally
+    '''
     env = connect_four_v3.env(render_mode=None)
     env.reset(seed=42)
     agent = SmartAgent(env)
@@ -86,6 +104,9 @@ def test_handles_terminated_game():
 
 # Temps par coup
 def test_time_per_move():
+    '''
+    Test the time per move of SmartAgent
+    '''
     env = connect_four_v3.env()
     env.reset()
     agent = SmartAgent(env)
@@ -101,6 +122,9 @@ def test_time_per_move():
 
 # Utilisation de la mémoire  
 def test_memory():
+    '''
+    Test the memory of SmartAgent
+    '''
     env = connect_four_v3.env()
     env.reset()
     agent = SmartAgent(env)
