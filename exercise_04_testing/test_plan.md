@@ -96,7 +96,7 @@ Etat du plateau :
 
 .&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.  
 
-X&nbsp;&nbsp;X&nbsp;&nbsp;X&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.    
+X X X&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.&nbsp;&nbsp;.    
 
 Attendu : L'agent joue la colonne 3 pour gagner
 
