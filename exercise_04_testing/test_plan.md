@@ -70,6 +70,7 @@ Tâche 4.1 : Concevoir votre plan de test
     gagner à son prochain tour si une colonne spécifique est choisie. Vérifier 
     que l'agent intelligent ne choisit pas cette colonne.
 
+
 1.3 Critères de succès    
 
    .L'agent intelligent doit gagner 90 pourcents des parties contre l'agent
@@ -79,6 +80,7 @@ Tâche 4.1 : Concevoir votre plan de test
     coup
 
    .La mémoire utilisée ne doit pas dépasser 10 MB
+
 
 Tâche 4.2 : Conception de cas de test
 
@@ -91,6 +93,7 @@ sont dans les colonnes 0, 1 et 2.
 
 Attendu : L'agent joue la colonne 3 pour gagner
 
+
 Scénario 2 : Bloquer la victoire de l'adversaire 
 
 Etat du plateau :  
@@ -99,6 +102,7 @@ Ladversaire a 3 jetons dans la dernière ligne et qui sont dans les colonnes 0, 
 et 2.
 
 Attendu : L'agent joue la colonne 3 pour bloquer 
+
 
 Scénario 3 : Bloquer une double menace de l'adversaire 
 
@@ -111,6 +115,7 @@ L'adversaire a 2 jetons dans la dernière ligne et qui sont dans les colonnes 2 
 
 Attendu : L'agent joue la colonne 1 ou 4 pour bloquer la double menace
 
+
 Scénario 4 : Créer une double menace
 
 Etat du plateau :  
@@ -122,6 +127,7 @@ L'adversaire a un jeton dans la dernière ligne et qui est dans la colonne 0. Il
 a également un jeton dans l'avant dernière ligne et qui est dans la colonne 3.
 
 Attendu : L'agent choisit soit la colonne 2 soit la colonne 5 pour créer une double menace 
+
 
 Scénario 5 : Eviter une colonne qui donnerait l'opportunité à l'adversaire de
 gagner à son prochain tour
@@ -138,6 +144,7 @@ Il a également 2 jetons dans la ligne 4 et qui sont dans les colonnes 1 et 3.
 Enfin, il a un jeton dans la ligne 3 et qui est dans la colonne 2.
 
 Attendu : L'agent ne choisit ni la colonne 1 ni la colonne 3
+
 
 Scénario 6 : Détecter les colonnes jouables
 
