@@ -1,5 +1,5 @@
 # Test minimax vs smart agent
-from tournament import run_tournament
+from tournament_smart_agent_improved import run_tournament
 from smart_agent_improved import SmartAgent
 from minimax_agent import MinimaxAgent
 
