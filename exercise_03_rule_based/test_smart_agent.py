@@ -1,7 +1,6 @@
 import smart_agent as smart
 import random_agent as rd
 import numpy as np
-import random
 from pettingzoo.classic import connect_four_v3
 
 env = connect_four_v3.env(render_mode = "human")
