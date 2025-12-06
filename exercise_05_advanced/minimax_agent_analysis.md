@@ -13,11 +13,11 @@ Appelle`_creates_double_threat(board, col, channel=0)`: si un coup peut génére
 6. **Rule 6 – Minimax Search**  
 Effectue une recherche `_minimax` sur les candidate_actions filtrés et choisit le coup avec la meilleure évaluation.  
 
-## Algorithme de recherche : Minimax avec élagage Alpha-Beta. 
+## Algorithme de recherche : Minimax avec élagage Alpha-Beta 
 1. **`_minimax(self, board, depth, alpha, beta, maximizing)`**:    
 **Conditions d’arrêt** : un joueur a déjà gagné / depth=0 → on appelle `_evaluate`.  
-**maximizing = True** signifie que c’est notre tour (channel 0), sinon c’est celui de l’adversaire.   
-**Alpha-Beta** est utilisé pour réduire le nombre de branches explorées.   
+**maximizing = True**: signifie que c’est notre tour (channel 0), sinon c’est celui de l’adversaire.   
+**Alpha-Beta**: est utilisé pour réduire le nombre de branches explorées.   
 2. **Profondeur adaptative `_adaptive_depth(self, board)`**：  
 Le nombre de cases vides détermine la profondeur de recherche :  
 · en fin de partie (peu de cases libres) → profondeur augmentée (self.depth + 1 ou +2),  
@@ -43,11 +43,11 @@ Pour refléter la préférence stratégique pour les colonnes centrales, la stra
 Cependant, dans les parties réelles, la plupart des combinaisons gagnantes apparaissent entre les lignes 2 et 5. Autrement dit, même si un pion est placé dans une colonne centrale, sa contribution à la victoire reste limitée s’il se trouve sur les lignes 0 ou 1.  
 À partir de cette observation, j’ai abandonné une pondération uniquement basée sur les colonnes pour adopter une pondération case par case, ce qui permet à la fonction d’évaluation de refléter plus précisément la valeur stratégique de chaque position sur le plateau.  
 ```
-[10 , 10 , 10 , 10 , 10 , 10 , 10],
-[10 , 50 , 50 , 50 , 50 , 50 , 10],
-[10 , 50 , 100, 200, 100, 50 , 10],
-[50 , 50 , 100, 200, 100, 50 , 50],
-[75 , 100, 200, 200, 200, 100, 75],
+[10 , 10 , 10 , 10 , 10 , 10 , 10 ],
+[10 , 50 , 50 , 50 , 50 , 50 , 10 ],
+[10 , 50 , 100, 200, 100, 50 , 10 ],
+[50 , 50 , 100, 200, 100, 50 , 50 ],
+[75 , 100, 200, 200, 200, 100, 75 ],
 [100, 100, 200, 200, 200, 100, 100]
 ```
 6. `_creates_double_threat`  
@@ -57,7 +57,7 @@ Si un coup crée deux menaces gagnantes simultanées, un bonus de +2000 est attr
 1. **Coup suicidaire `_find_suicidal_move`**  
 Simule un de nos coups puis toutes les réponses adverses possibles ;
 si une réponse mène immédiatement à une victoire adverse, le coup est considéré comme suicidaire et écarté.  
-2. **Détection de double menace**  
-`_is_double_two_spot`: vérifie si une case permettrait, pour un joueur donné, de former des chaînes d’au moins deux pièces dans au moins deux directions différentes.
-`_find_block_double_two_spot`: parcourt toutes les colonnes pour identifier les endroits où l’adversaire pourrait créer ce type de double menace, afin de jouer préventivement.
-`_creates_double_threat`: vérifie si un de nos coups crée deux menaces gagnantes au tour suivant.
+2. **Détection de double menace**    
+`_is_double_two_spot`: vérifie si une case permettrait, pour un joueur donné, de former des chaînes d’au moins deux pièces dans au moins deux directions différentes.  
+`_find_block_double_two_spot`: parcourt toutes les colonnes pour identifier les endroits où l’adversaire pourrait créer ce type de double menace, afin de jouer préventivement.  
+`_creates_double_threat`: vérifie si un de nos coups crée deux menaces gagnantes au tour suivant.  
