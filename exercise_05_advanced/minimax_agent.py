@@ -2,6 +2,7 @@
 Minimax agent with alpha-beta pruning
 """
 
+import time
 import numpy as np
 import random
 #from loguru import logger
@@ -11,7 +12,6 @@ class MinimaxAgent:
     """
     Agent using minimax algorithm with alpha-beta pruning
     """
-
     def __init__(self, env, player_name=None):
         """
         Initialize minimax agent
@@ -25,19 +25,26 @@ class MinimaxAgent:
         self.depth = 4
         self.player_name = player_name or f"Minimax(d={self.depth})"
         self.POSITION_WEIGHTS = np.array([
-            [10, 10, 10, 10, 10, 10, 10],
-            [10, 50, 50, 50, 50, 50, 10],
-            [10, 50, 100, 200, 100, 50, 10],
-            [50, 50, 100, 200, 100, 50, 50],
-            [75, 100, 200, 200, 200, 100, 75],
-            [100, 100, 200, 200, 200, 100, 100],
+            [10, 10 , 10 , 10 , 10 , 10 , 10],
+            [10, 50 , 50 , 50 , 50 , 50 , 10],
+            [10, 50 , 100, 200, 100, 50 , 10],
+            [25, 50 , 100, 300, 100, 50 , 25],
+            [50, 100, 200, 300, 200, 100, 50],
+            [75, 100, 200, 300, 200, 100, 75],
         ])
+        self.transposition = {}
+        self.time_limit = 2.0
+        self._deadline = None
 
     def choose_action(self, observation, reward=0.0, terminated=False, truncated=False, info=None, action_mask=None):
         """
         Choose action using minimax algorithm
         """
-        valid_actions = [i for i, valid in enumerate(action_mask) if valid == 1]
+        start = time.perf_counter()
+        self._deadline = start + self.time_limit
+
+        self.transposition.clear()
+        valid_actions = self._get_valid_moves(observation)
         
         # Rule 1: Win immediately
         winning_move = self._find_winning_move(observation, channel=0)
@@ -61,19 +68,31 @@ class MinimaxAgent:
             if not self._find_suicidal_move(observation, a):
                 safe_actions.append(a)
         candidate_actions = safe_actions if safe_actions else valid_actions
-        
-        # Rule 5: Create double threat
+
+        # Rule 5: create forced-win-in-two
+        empty = np.sum((observation[:, :, 0] == 0) & (observation[:, :, 1] == 0))
+        if empty <= 15 and time.perf_counter() < self._deadline:
+            for a in candidate_actions:
+                if time.perf_counter() > self._deadline:
+                    break
+                if self._is_forced_win_in_two(observation, a, channel=0):
+                    #logger.debug(f"[FW2] {a}")
+                    return a
+
+        # Rule 6: Create double threat
         for a in candidate_actions:
             if self._creates_double_threat(observation, a, channel=0):
                 #logger.info(f"{self.player_name}: DOUBLE THREAT -> column {a}")
                 return a
 
-        # Rule 6: Minimax
+        # Rule 7: Minimax
         best_action = None
         best_value = float('-inf')
 
         # Try each valid action
         for action in candidate_actions:
+            if self._deadline is not None and time.perf_counter() > self._deadline:
+                break
             # Simulate the move
             new_board = self._simulate_move(observation, action, channel=0)
 
@@ -86,6 +105,9 @@ class MinimaxAgent:
                 best_value = value
                 best_action = action
 
+        if best_action is None:
+            return candidate_actions[0] if candidate_actions else valid_actions[0]
+        
         return best_action if best_action is not None else random.choice(valid_actions)
 
     def _minimax(self, board, depth, alpha, beta, maximizing):
@@ -112,35 +134,64 @@ class MinimaxAgent:
         #   - Recursively evaluate
         #   - Update alpha/beta
         #   - Prune if possible
+        if self._deadline is not None and time.perf_counter() > self._deadline:
+            return 0.0 
+        
+        key = (board.tobytes(), maximizing)
+
+        if key in self.transposition:
+            return self.transposition[key]
+        
         if self._check_win(board, 0):
-            return 100000
+            val = 100000
+            self.transposition[key] = val
+            return val
         if self._check_win(board, 1):
-            return -100000
+            val = -100000
+            self.transposition[key] = val
+            return val
         if depth == 0:
-            return self._evaluate(board)
+            val = self._evaluate(board)
+            self.transposition[key] = val
+            return val
         
         valid_moves = self._get_valid_moves(board)
         if not valid_moves:
-            return self._evaluate(board)
+            val = self._evaluate(board)
+            self.transposition[key] = val
+            return val
+        
         if maximizing:
             max_eval = float('-inf')
             for col in valid_moves:
-                new_board = self._simulate_move(board, col, channel=0)
-                eval = self._minimax(new_board, depth - 1, alpha, beta, False)
+                #new_board = self._simulate_move(board, col, channel=0)
+                #eval = self._minimax(new_board, depth - 1, alpha, beta, False)
+                row = self._make_move_inplace(board, col, channel=0)
+                if row is None:
+                    continue
+                eval = self._minimax(board, depth - 1, alpha, beta, False)
                 max_eval = max(max_eval, eval)
                 alpha = max(alpha, max_eval)
+                self._undo_move_inplace(board, col, row, channel=0)
                 if beta <= alpha:
                     break
+            self.transposition[key] = max_eval
             return max_eval
         else:
             min_eval = float('inf')
             for col in valid_moves:
-                new_board = self._simulate_move(board, col, channel=1)
-                eval = self._minimax(new_board, depth - 1, alpha, beta, True)
+                #new_board = self._simulate_move(board, col, channel=1)
+                #eval = self._minimax(new_board, depth - 1, alpha, beta, True)
+                row = self._make_move_inplace(board, col, channel=1)
+                if row is None: 
+                    continue
+                eval = self._minimax(board, depth - 1, alpha, beta, True)
                 min_eval = min(min_eval, eval)
                 beta = min(beta, min_eval)
+                self._undo_move_inplace(board, col, row, channel=1)
                 if beta <= alpha:
                     break
+            self.transposition[key] = min_eval
             return min_eval
         
     def _get_next_row(self, board, col): 
@@ -199,22 +250,14 @@ class MinimaxAgent:
     
     def _find_suicidal_move(self, board, col):
         """
-        Check whether playing column `col` (as player 0) is a suicidal move.
-
-        A move is suicidal if, after we play it, the opponent has an immediate
-        winning move on their next turn.
+        Check whether playing in column `col` allows the opponent to win immediately.
+        Such a move is considered suicidal.
 
         Returns:
-            bool: True if the move is suicidal, otherwise False.
+            bool: True if the move leads to an immediate opponent win, otherwise False.
         """
         board_after_my_move = self._simulate_move(board, col, channel=0)
-        valid_moves = self._get_valid_moves(board_after_my_move)
-        for opp_col in valid_moves:
-            board_after_opp = self._simulate_move(board_after_my_move, opp_col, channel=1)
-            if self._check_win(board_after_opp, 1):
-                #logger.info(f"[Suicidal] Action {col} is suicidal! Opponent wins by {opp_col}")
-                return True
-        return False
+        return self._find_winning_move(board_after_my_move, channel=1) is not None
 
     def _count_three_in_row(self, board, channel):
         """
@@ -306,7 +349,7 @@ class MinimaxAgent:
           - 3-in-a-row: ours +200 each, opponent -50 each
           - 2-in-a-row: ours +20 each, opponent -10 each
           - Positional weights: add/subtract predefined cell values
-          - Double threat: +2000 (once)
+          - Create double threat: +2000 (once)
 
         Returns:
             float: score (positive = good for us)
@@ -328,38 +371,25 @@ class MinimaxAgent:
         # Count 3-in-a-row patterns (without the 4th piece blocked)
         my_three = self._count_three_in_row(board, 0)
         opp_three = self._count_three_in_row(board, 1)
-        s_three = my_three * 200 - opp_three * 50
-        score += s_three
+        score += my_three * 200 - opp_three * 50
 
         # Count 2-in-a-row patterns
         my_two = self._count_two_in_row(board, 0)
         opp_two = self._count_two_in_row(board, 1)
-        s_two = my_two * 20 - opp_two * 10
-        score += s_two
+        score += my_two * 20 - opp_two * 10
 
-        # Prefer center positions
-        #score += self._count_pieces_in_column(board, 0, 3) * 30
-        #score += self._count_pieces_in_column(board, 0, 2) * 20
-        #score += self._count_pieces_in_column(board, 0, 4) * 20
-        #score += self._count_pieces_in_column(board, 0, 0) * 10
-        #score += self._count_pieces_in_column(board, 0, 1) * 10
-        #score += self._count_pieces_in_column(board, 0, 5) * 10
-        #score += self._count_pieces_in_column(board, 0, 6) * 10
+        my_plane = board[:, :, 0]
+        opp_plane = board[:, :, 1]
 
-        for r in range(6):
-            for c in range(7):
-                if board[r, c, 0] == 1:
-                    score += self.POSITION_WEIGHTS[r, c]
-                elif board[r, c, 1] == 1:
-                    score -= self.POSITION_WEIGHTS[r, c]
+        if np.any(my_plane):
+            rows, cols = np.where(my_plane == 1)
+            score += self.POSITION_WEIGHTS[rows, cols].sum()
 
-        # Double threat
-        for col in self._get_valid_moves(board):
-            if self._creates_double_threat(board, col, channel=0):
-                score += 2000
-                break
+        if np.any(opp_plane):
+            rows, cols = np.where(opp_plane == 1)
+            score -= self.POSITION_WEIGHTS[rows, cols].sum()
 
-        return score
+        return float(score)
 
     def _check_win(self, board, channel):
         """
@@ -396,9 +426,14 @@ class MinimaxAgent:
         """
         valid_moves = self._get_valid_moves(board)
         for col in valid_moves:
-            new_board = self._simulate_move(board, col, channel=channel)
-            if self._check_win(new_board, channel):
+            #new_board = self._simulate_move(board, col, channel=channel)
+            row = self._get_next_row(board, col)
+            board[row, col, channel] = 1
+            
+            if self._check_win(board, channel):
+                board[row, col, channel] = 0
                 return col
+            board[row, col, channel] = 0
         return None
     
     def _opponent_can_win_next(self, board, my_channel=0):
@@ -440,6 +475,26 @@ class MinimaxAgent:
                     return True
         return False
     
+    def _is_forced_win_in_two(self, board, a, channel):
+        """
+        Check whether playing move `a` guarantees a win in two moves.
+        
+        Returns:
+            bool: True if move `a` guarantees a forced win in two moves; False otherwise.
+        """
+        if self._deadline is not None and time.perf_counter() > self._deadline:
+            return False
+        board1 = self._simulate_move(board, a, channel)
+        opp = 1 - channel
+
+        for b in self._get_valid_moves(board1):
+            if self._deadline is not None and time.perf_counter() > self._deadline:
+                return False
+            board2 = self._simulate_move(board1, b, opp)
+            if self._find_winning_move(board2, channel) is None:
+                return False
+        return True
+
     def _adaptive_depth(self, board):
         """
         Adjust the search depth based on how many empty cells remain.
@@ -450,9 +505,9 @@ class MinimaxAgent:
         """
         empty = np.sum((board[:, :, 0] == 0) & (board[:, :, 1] == 0))
         if empty <= 8:
-            return self.depth + 2
+            return self.depth
         elif empty <= 14:
-            return self.depth + 1
+            return self.depth - 1
         else:
             return self.depth - 1
 
@@ -510,3 +565,25 @@ class MinimaxAgent:
                 return col
         return None
 
+    def _make_move_inplace(self, board, col, channel):
+        """
+        Place a piece for the given channel in column `col` (in-place) and return the row.
+        If the column is full, return None.
+
+        Returns:
+            int or None: The row where the piece is placed, or None if the column is full.
+        """
+        row = self._get_next_row(board, col)
+        if row is None:
+            return None
+        board[row, col, channel] = 1
+        return row
+
+    def _undo_move_inplace(self, board, col, row, channel):
+        """
+        Undo a piece placed at (row, col, channel) (in-place).
+
+        Returns:
+            None
+        """
+        board[row, col, channel] = 0
