@@ -1,7 +1,7 @@
 import time
 import numpy as np
 from pettingzoo.classic import connect_four_v3
-from minimax_agent import MinimaxAgent  # 按你的文件名改
+from minimax_agent import MinimaxAgent
 
 def test_time_per_move():
     """
